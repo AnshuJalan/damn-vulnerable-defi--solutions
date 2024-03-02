@@ -22,7 +22,8 @@ describe('[Challenge] Truster', function () {
     });
 
     it('Execution', async function () {
-        /** CODE YOUR SOLUTION HERE */
+        trusterLenderDrainer = await (await ethers.getContractFactory('TrusterLenderDrainer', player)).deploy(pool.address, token.address);
+        trusterLenderDrainer.drainTrusterLender();
     });
 
     after(async function () {
